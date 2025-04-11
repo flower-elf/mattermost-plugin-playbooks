@@ -108,7 +108,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: dist/
+          path: dist/*.tar.gz
   
 
   generate-specs:
