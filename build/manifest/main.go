@@ -135,7 +135,7 @@ func findManifest() (*model.Manifest, error) {
 			if BuildTagLatest != "" {
 				version = BuildTagLatest + "+" + BuildHashShort
 			} else {
-				version = "v2.0.0+" + BuildHashShort
+				version = "v9.9.9+" + BuildHashShort
 			}
 		}
 		manifest.Version = strings.TrimPrefix(version, "v")
