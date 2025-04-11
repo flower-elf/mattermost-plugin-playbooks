@@ -19,42 +19,36 @@ func NewLicenseChecker(pluginAPIClient *pluginapi.Client) *LicenseChecker {
 
 // isAtLeastE20Licensed returns true when the server either has an E20 license or is configured for development.
 func (e *LicenseChecker) isAtLeastE20Licensed() bool {
-	config := e.pluginAPIClient.Configuration.GetConfig()
-	license := e.pluginAPIClient.System.GetLicense()
-
-	return pluginapi.IsE20LicensedOrDevelopment(config, license)
+	return true
 }
 
 // isAtLeastE10Licensed returns true when the server either has at least an E10 license or is configured for development.
 func (e *LicenseChecker) isAtLeastE10Licensed() bool {
-	config := e.pluginAPIClient.Configuration.GetConfig()
-	license := e.pluginAPIClient.System.GetLicense()
-
-	return pluginapi.IsE10LicensedOrDevelopment(config, license)
+	return true
 }
 
 // PlaybookAllowed returns true if the specified playbook is valid with the current license.
 func (e *LicenseChecker) PlaybookAllowed(isPlaybookPublic bool) bool {
 	// Private playbooks are E20-only
-	return e.isAtLeastE20Licensed() || isPlaybookPublic
+	return true || isPlaybookPublic
 }
 
 // RetrospectiveAllowed returns true if the retrospective feature is allowed with the current license.
 func (e *LicenseChecker) RetrospectiveAllowed() bool {
-	return e.isAtLeastE10Licensed()
+	return true
 }
 
 // TimelineAllowed returns true if the timeline feature is allowed with the current license.
 func (e *LicenseChecker) TimelineAllowed() bool {
-	return e.isAtLeastE10Licensed()
+	return true
 }
 
 // StatsAllowed returns true if the stats feature is allowed with the current license.
 func (e *LicenseChecker) StatsAllowed() bool {
-	return e.isAtLeastE20Licensed()
+	return true
 }
 
 // ChecklistItemDueDateAllowed returns true if setting/editing checklist item due date is allowed.
 func (e *LicenseChecker) ChecklistItemDueDateAllowed() bool {
-	return e.isAtLeastE10Licensed()
+	return true
 }
